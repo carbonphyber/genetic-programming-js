@@ -10,7 +10,7 @@ This genetic algorithm uses a fitness scoring method which penalizes interpreter
 
 ### Why Do This? ###
 
-Skilled programmers are expensive and machine processor time has become extremely cheap. This started as an experiment to find out how much a non-programmer could be empowered to "write code" without having to know anything about the programming language.
+Skilled programmers are expensive and machine processor time has become extremely cheap. This started as an experiment to find out how much a non-programmer could be empowered to "write code" without having to know anything about the programming language. One thought I had was to design a SOA contract (an API of lots of different function signatures) and then outsource the creation of unit tests to [MTurk](https://en.wikipedia.org/wiki/Amazon_Mechanical_Turk).
 
 Also, genetic algorithms are simply interesting.
 
@@ -33,6 +33,10 @@ The default behavior for text feedback is to update stats and the best code afte
 Q: Why doesn't the generated function pass all of the tests?
 
 A: It's difficult to tune a genetic algorithm to *always* find it's way to the perfectly optimal result. A common problem is that a genetic algorithm finds a "local maxima" and can't find a way to improve. This is a side-effect of the fitness scoring function.
+
+Q: How can I improve the quality of the generated code?
+
+A: The number and quality of tests in your test set is paramount. Additionally, you could consider tweaking how the code generator in the mutation function works. Useful improvements would likely involve giving the mutation function more JavaScript "intuition" (rules about the structure of the language) or newer language features. Additionally, you could migrate the code data structure from an array of strings to an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
 Q: What is the garbage code in the first iteration?
 

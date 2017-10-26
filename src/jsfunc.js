@@ -165,13 +165,17 @@ module.exports = {
 
   notification: function(pop, generation, stats, isFinished) {
     const chalk = require('chalk'),
-      now = (new Date).valueOf() / 1000;
+      now = (new Date).valueOf() / 1000,
+      secondsElapsed = now - this.userData.startedAt,
+      score = pop[0].fitness,
+      avg_goal = this.userData.goal,
+      goal = this.userData.TESTS.length * this.userData.goal;
 // console.log('genetic.notification', [pop, generation, stats, isFinished]);
 console.log(
   'iteration',
-  chalk.bold('elapsed: ') + chalk.gray((now - this.userData.startedAt).toFixed(3) + 's'),
-  chalk.bold('score: '), chalk[pop[0].fitness > 0 ? 'green' : 'red'](pop[0].fitness.toFixed(1)),
-  chalk.bold('/ ') + chalk.gray(this.userData.TESTS.length * this.userData.goal),
+  chalk.bold('elapsed: ') + chalk.gray(secondsElapsed.toFixed(3) + 's'),
+  chalk.bold('score: '), chalk[score <= 0 ? 'red' : score <= goal ? 'gray' : 'green'](score.toFixed(1)),
+  chalk.bold('/ ') + chalk.gray(goal),
   chalk.bold('code: ') + pop[0].entity.map(e => e.value).join(' ')
 );
     if(isFinished) {
