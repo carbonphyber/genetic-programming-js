@@ -160,7 +160,7 @@ module.exports = {
 
   generation: function(pop, generation, stats) {
 // console.log('genetic.generation', [pop, generation, stats]);
-    return pop[0].fitness < (this.userData.TESTS.length * 198);
+    return pop[0].fitness < (this.userData.TESTS.length * this.userData.goal);
   },
 
   notification: function(pop, generation, stats, isFinished) {
@@ -169,9 +169,9 @@ module.exports = {
 // console.log('genetic.notification', [pop, generation, stats, isFinished]);
 console.log(
   'iteration',
-  chalk.bold('score: '), chalk[pop[0].fitness > 0 ? 'green' : 'red'](pop[0].fitness),
-  chalk.bold('until: ') + chalk.gray(this.userData.TESTS.length * 198),
   chalk.bold('elapsed: ') + chalk.gray((now - this.userData.startedAt).toFixed(3) + 's'),
+  chalk.bold('score: '), chalk[pop[0].fitness > 0 ? 'green' : 'red'](pop[0].fitness.toFixed(1)),
+  chalk.bold('/ ') + chalk.gray(this.userData.TESTS.length * this.userData.goal),
   chalk.bold('code: ') + pop[0].entity.map(e => e.value).join(' ')
 );
     if(isFinished) {

@@ -32,7 +32,14 @@ const Genetic = require('genetic-js'),
     'mutation': 0.5,
     'skip': 20,
   }, {
+    // the test set (array)
     'TESTS': TESTS,
+
+    // the average score required for each test to accept the generated code (number)
+    // this should be high enough for few/no errors, most/all tests pass, and a little leeway for code length
+    'goal': 198,
+
+    // timestamp of the start of the genetic algo (number)
     'startedAt': (new Date).valueOf() / 1000,
   });
 })('2');
