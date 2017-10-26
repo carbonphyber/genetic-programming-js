@@ -164,11 +164,19 @@ module.exports = {
   },
 
   notification: function(pop, generation, stats, isFinished) {
+    const chalk = require('chalk'),
+      now = (new Date).valueOf() / 1000;
 // console.log('genetic.notification', [pop, generation, stats, isFinished]);
-console.log('genetic.notification', [pop[0].fitness, this.userData.TESTS.length * 160, pop[0].entity.map(e => e.value).join(' ')]);
+console.log(
+  'iteration',
+  chalk.bold('score: '), chalk[pop[0].fitness > 0 ? 'green' : 'red'](pop[0].fitness),
+  chalk.bold('until: ') + chalk.gray(this.userData.TESTS.length * 198),
+  chalk.bold('elapsed: ') + chalk.gray((now - this.userData.startedAt).toFixed(3) + 's'),
+  chalk.bold('code: ') + pop[0].entity.map(e => e.value).join(' ')
+);
     if(isFinished) {
       console.log('notification stats', stats);
-console.log('WINNER', pop[0].entity.map(e => e.value).join(' '));
+console.log('WINNER', chalk.black.bgWhite(pop[0].entity.map(e => e.value).join(' ')));
     }
   },
 

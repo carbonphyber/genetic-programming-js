@@ -33,5 +33,6 @@ const Genetic = require('genetic-js'),
     'skip': 20,
   }, {
     'TESTS': TESTS,
+    'startedAt': (new Date).valueOf() / 1000,
   });
 })('2');

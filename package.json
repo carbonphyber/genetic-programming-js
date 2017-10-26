@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "async": "^2.1.4",
+    "chalk": "^2.3.0",
     "genetic-js": "^0.1.14"
   },
   "devDependencies": {},
