@@ -1,0 +1,16 @@
+{
+  "name": "genetic",
+  "version": "0.0.1",
+  "description": "Genetic programming: tool to generate a JavaScript function to fulfill user-specified unit tests",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "async": "^2.1.4",
+    "genetic-js": "^0.1.14"
+  },
+  "devDependencies": {},
+  "author": "DJW",
+  "license": "ISC"
+}
